@@ -12,3 +12,32 @@
  *
  */
 @import "bootstrap";
+
+
+.container {
+  text-align: center;
+  margin-top: 79px;
+
+}
+.navbar-nav mr-auto {
+float: right;
+width: 100%;
+
+}
+body {
+    background-color: aliceblue;
+    margin: 30px;
+}
+.text-center h2 {
+    color: royalblue;
+    margin-bottom: 45px;
+}
+.container p {
+    font-size: medium;
+}
+[type="submit"]:not(:disabled) {
+    cursor: pointer;
+    background-color: firebrick;
+    width: 92px;
+    height: 35px;
+}
