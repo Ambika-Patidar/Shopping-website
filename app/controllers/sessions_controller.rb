@@ -1,19 +1,23 @@
 class SessionsController < ApplicationController
-
+  layout "login"
   def new
     user = User.new
   end
 
   def create
-    
     user = User.find_by(email: user_params[:email])
     if user && user.authenticate(user_params[:password])
-       session[:user_id] = user.id 
-       redirect_to dashboard_index_path
+      session[:user_id] = user.id 
+      redirect_to dashboard_index_path
     else
-      flash[:warning] = "Invalid email and password" 
-      redirect_to root_path 
+      flash[:error] = "Invalid email and password" 
+      redirect_to sessions_new_path 
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to home_index_path
   end
 
   private

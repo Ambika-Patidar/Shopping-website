@@ -1,4 +1,5 @@
-class RegistrationsController < ApplicationController
+class RegistrationsController < ApplicationController  
+  layout "login"   
   def new 
     @user = User.new
   end
@@ -6,15 +7,15 @@ class RegistrationsController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-       flash[:success] = "You Sign Up Successfully "
-       redirect_to  root_path
+      redirect_to  root_path, :flash => { :notice => "You Sign Up Successfully " }
     else
       render 'new'
     end
   end
 
   private
-    def user_params
-      params.require(:registration).permit(:first_name, :last_name, :email, :password)
-    end
+  
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
+  end
 end
