@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
   def create
     @categories = Category.all
     @product = current_user.products.build(product_params)
-    byebug
       if @product.save
         redirect_to  products_path
       else
@@ -47,7 +46,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :brand, :price, :category_id)
+    params.require(:product).permit(:name, :brand, :price, :category_id, :image)
   end
 
   def require_login
