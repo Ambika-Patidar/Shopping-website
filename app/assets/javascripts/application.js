@@ -18,3 +18,4 @@
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
+//= require activestorage

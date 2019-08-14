@@ -1,9 +1,7 @@
 <%= form_with scope: :user, url: sessions_create_path, local: true do |f| %>
   <div class="container">
     <div class="text-center">
-      <h2>
-        Sign In
-      </h2>
+      <h2>Sign In</h2>
     <p>
       <%= f.label :email%><br>
       <%= f.text_field :email %><br>

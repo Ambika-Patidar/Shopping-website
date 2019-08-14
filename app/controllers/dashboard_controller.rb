@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
  before_action :require_login, only:[ :index]
+
  private
 
  def require_login
@@ -7,5 +8,9 @@ class DashboardController < ApplicationController
    flash[:error] = "You must be logged in to access this section"
    redirect_to sessions_new_path
   end
+ end
+
+ def index
+  Welcome to current_user.first_name
  end
 end

@@ -1,0 +1,40 @@
+<div style="margin-top: -828px; float: right; margin-right: 66px;">
+  <%= link_to 'Back', products_path %>
+</div>
+<%= form_for @product  do |f| %>
+  <div class="container text-center">
+    <% if @product.errors.any? %>
+      <div id ="error_explanation" class="error_messages">
+        <h5>
+          <%= pluralize(@product.errors.count, "error") %> prohibited
+          this product from being saved:
+        </h5>
+        <ul>
+          <% @product.errors.full_messages.each do |msg| %>
+            <li><%= msg %> </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p>
+      <%= f.label :product %><br>
+      <%= f.text_field :name %><br>
+    </p>
+    <p>
+      <%= f.label :brand %><br>
+      <%= f.text_field :brand %><br>
+    </p>
+    <p>
+      <%= f.label :price%><br>
+      <%= f.number_field :price %><br>
+    </p>
+    <p>
+      <%= f.label :category%><br>
+      <%= f.select :category_id, options_for_select(@categories.map { |c| [c.category_name, c.id] }), options = { include_blank: "Please select" } %><br>
+    </p>
+
+    <p>
+      <%= f.submit 'Submit'  %>
+    </p>
+  </div>
+<% end %>
