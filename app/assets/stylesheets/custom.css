@@ -1,7 +1,6 @@
 
 .container {
-  text-align: center;
-  margin-top: 41px;
+  margin-top: -4px;
 
 }
 .navbar-nav mr-auto {
@@ -17,7 +16,7 @@ body {
 .text-center h2 {
   color: royalblue;
   margin-bottom: 45px;
-  margin-top: 130px;
+  margin-top: 2px;
   font-size: 43px;
 }
 .text-center  a{
@@ -35,7 +34,10 @@ body {
 .error_messages {
   color: red;
   font-size: small;
-  margin-top: 103px;
+  margin-top: 22px;
+}
+.alert {
+  margin-top: 4px;
 }
 .error_messages ul {
   list-style-type: none;
@@ -90,37 +92,53 @@ img {
 }
 
 .user-dashboard {
-  margin-top: -622px;
-  color: sienna;
-  text-align: center;
-  font-size: 68px;
-  margin-left: 157px;
-  margin-right: 8px;
+  margin-top: -760px;
+  margin-left: 158px;
+  margin-right: 7px;
 }
 
 .product-list {
-  margin-left: 187px;
-  margin-top: -762px;
+  margin-left: 157px;
+  margin-top: -701px;
 }
-/*.product-list th {
-  padding-right: 122px;
-}*/
 
 .new_product {
-  margin-top: -799px;
+  margin-top: -735px;
 }
 
 .alert alert-notice {
   color: orange;
 }
 
-.new-product-button p{
+.new-product-button {
   float: right;
   margin-right: 68px;
-  margin-top: -820px;
+  margin-top: -748px;
 }
 
 .edit-product {
   margin-left: 651px;
   margin-top: -627px;
 }
+.cart-products-list {
+  margin-left: 157px;
+  margin-top: -760px;
+  margin-right: -16px;
+}
+.card-img-top {
+  width: 300px;
+  height: 160px;
+  margin-left: 18px;
+  margin-top: 1px;
+}
+
+.card-body p a { 
+  margin-top: 17px;
+  width: 173px;
+}
+
+.quantity-button a {
+  margin-right: 9px;
+  margin-left: 10px;
+}
+

@@ -38,6 +38,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find_by_id(params[:id])
+    @product.cart_items.destroy
     @product.destroy
  
     redirect_to products_path
@@ -51,7 +52,7 @@ class ProductsController < ApplicationController
 
   def require_login
     unless current_user  
-     flash[:error] = "You must be logged in to access this section"
+     flash[:danger] = "You must be logged in to access this section"
      redirect_to sessions_new_path
     end
   end

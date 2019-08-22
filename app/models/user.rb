@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :products
+  has_one :cart
+  has_many :orders
   validates_presence_of :first_name, :last_name, :email
   validates :password ,length: { minimum: 6 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "only allows valid emails" }, uniqueness: true

@@ -14,15 +14,15 @@
         <th></th>
       </tr>
     </thead>
-    <% @products.each do |product| %>
+    <% current_user.products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
         <td><%= product.brand %></td>
         <td><%= product.price %></td>
         <td><%= product.category.category_name %></td>
         <td><%= image_tag(product.image) if product.image.attachment %></td>
-        <td><%= link_to 'Edit',edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy',product_path(product),method: :delete,
+        <td><%= link_to 'Edit',edit_product_path(product), :class => "btn btn-info"  %></td>
+        <td><%= link_to 'Destroy',product_path(product),method: :delete, :class => "btn btn-info" ,
               data: { confirm: 'Are you sure?' } %></td>
         </td>
       </tr>

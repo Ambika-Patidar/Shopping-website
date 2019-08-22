@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 
+  1: MyString
+  cgst: 9.99
+  sgst: 9.99
+  total_tax: 9.99
+  price: 9.99
+  product_id: 1
+  cart_id: 1
+
+two:
+  quantity: 
+  1: MyString
+  cgst: 9.99
+  sgst: 9.99
+  total_tax: 9.99
+  price: 9.99
+  product_id: 1
+  cart_id: 1

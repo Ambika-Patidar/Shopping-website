@@ -1,3 +1,11 @@
-<div class="my-shopping-cart">
-  <h1>Welcome to My Shopping Cart</h1>
+<div class="card-deck" style="width: 70rem; margin-top: 4px;">
+  <% @products.each do |product| %>
+    <div class="card">
+      <%= link_to image_tag(product.image, :class => "card-img-top"), home_show_path(id: product.id) %>
+      <div class="card-body" style="text-align: center;">
+        <h5> <%= product.name %> </h5>
+        <p><%=link_to 'ADD TO CART',cart_items_path(id: product.id), method: :post, :class => "btn btn-info"%></p>
+      </div>
+    </div>
+  <% end %>
 </div>
