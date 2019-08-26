@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
+gem 'autoprefixer-rails'
 # bootstrap
 gem 'bootstrap', '~> 4.3.1'
-gem 'autoprefixer-rails'
 # bootstrap javascript
-gem  'jquery-rails'
+gem 'jquery-rails'
 # mini-racer
 gem 'mini_racer', '~> 0.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
- gem 'bcrypt', '~>  3.1.7' 
+ gem 'bcrypt', '~> 3.1.7' 
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

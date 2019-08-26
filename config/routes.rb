@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'registrations/new'
   get 'home/index'
-  get  'home/show'
   
   resources :cart_items, :except => [:show] do 
     member do 
