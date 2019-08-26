@@ -1,12 +1,16 @@
 
 .container {
-  margin-top: -4px;
+  margin-top: 105px;
+  margin-left: 314px;
 
 }
 .navbar-nav mr-auto {
   float: right;
   width: 100%;
 
+}
+.header {
+  margin-left: -7px;
 }
 body {
   background-color: aliceblue;
@@ -16,20 +20,15 @@ body {
 .text-center h2 {
   color: royalblue;
   margin-bottom: 45px;
-  margin-top: 2px;
+  margin-top: -43px;
   font-size: 43px;
+  margin-left: -271px;
 }
 .text-center  a{
   margin: 6px;
 }
 .container p {
   font-size: medium;
-}
-[type="submit"]:not(:disabled) {
-  cursor: pointer;
-  background-color: silver;
-  width: 92px;
-  height: 35px;
 }
 .error_messages {
   color: red;
@@ -43,7 +42,7 @@ body {
   list-style-type: none;
 }
 .bg-light {
-  padding-left: 1px;
+  padding-left: 0px;
   background-color: #ffffff !important;
   width: 100%;
   height: 82px;
@@ -75,8 +74,8 @@ img {
 .sidebar-nav {
   background-color: #2c2a2b;
   height: -webkit-fill-available;
-  margin-left: -22px;
-  margin-right: -8px;
+  margin-left: -25px;
+  margin-right: -5px;
 
 }
 .sidebar-nav a:hover {
@@ -92,14 +91,14 @@ img {
 }
 
 .user-dashboard {
-  margin-top: -760px;
-  margin-left: 158px;
-  margin-right: 7px;
+  margin-top: -849px;
+  margin-left: 154px;
+  margin-right: -62px;
 }
 
 .product-list {
   margin-left: 157px;
-  margin-top: -701px;
+  margin-top: -767px;
 }
 
 .new_product {
@@ -112,17 +111,19 @@ img {
 
 .new-product-button {
   float: right;
-  margin-right: 68px;
-  margin-top: -748px;
+  margin-right: 46px;
+  margin-top: -821px;
 }
 
 .edit-product {
   margin-left: 651px;
-  margin-top: -627px;
+  margin-top: -827px;
+}
+.edit_product {
+  margin-top: -46px;
 }
 .cart-products-list {
-  margin-left: 157px;
-  margin-top: -760px;
+  margin-top: -788px;;
   margin-right: -16px;
 }
 .card-img-top {
@@ -141,4 +142,63 @@ img {
   margin-right: 9px;
   margin-left: 10px;
 }
-
+.order-button {
+  margin-left: 700px;
+  margin-top: 67px;
+}
+.address-form{
+  margin-left: 530px;
+  margin-top: -748px;
+}
+.address-form input{
+  margin-left: 95px;
+}
+.col-sm-10 {
+  margin-left: 20px;
+}
+.submit-button {
+  margin-top: 38px;
+  margin-left: -191px;
+}
+.submit-sign-button {
+  margin-top: 38px;
+  margin-left:-289px
+}
+.new_address {
+  margin-top: 59px;
+}
+.error-addresses {
+  margin-top: -82px;
+  color: red;
+}
+.address-header {
+  margin-left: 130px;
+  margin-top: -7px; 
+  color: royalblue;
+}
+.address-list {
+  margin-right: 137px;
+  margin-top: -849px;
+}
+.address-button {
+  float: right;
+  margin-top: 10px;
+  margin-right: -114px;
+  margin-bottom: 10px;
+}
+.home-product {
+  margin-top: -105px;
+  margin-left: -25px;
+}
+.table {
+  margin-left: 149px;
+}
+.cancel-button {
+  margin-top: -44px;
+}
+.field_with_errors {
+  margin-left: 107px;
+}
+.table-striped td a{
+  margin-right: 28px;
+}
