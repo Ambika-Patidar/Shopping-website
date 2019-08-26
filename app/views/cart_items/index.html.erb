@@ -15,29 +15,31 @@
         <th></th>
       </tr>
     </thead> 
-    <% if current_user.cart.present? %>
-      <% current_user.cart.products.each do |product| %>
-        <tr> 
-          <td><%= product.name %></td>
-          <td><%= product.brand %></td>
-          <%# byebug %>
-          <% @cart_items.where(@product,current_user.cart).each do |cart_item| %>
-            <% if product.id == cart_item.product_id && current_user.id == current_user.cart.user_id && current_user.cart.id == cart_item.cart_id %>
-              <td class="quantity-button"> 
-                <%= link_to '-', cart_items_decrease_quantity_cart_item_path(cart_item.product_id), method: :patch, :class => "btn btn-info" %>
-                <%= cart_item.quantity %>
-                <%= link_to '+', cart_items_increase_quantity_cart_item_path(cart_item.product_id), method: :patch, :class => "btn btn-info"%>
-              </td>
-              <td><%= cart_item.cgst %></td>
-              <td><%= cart_item.sgst %></td>
-              <td><%= cart_item.total_tax %></td>
-              <td><%= cart_item.price %></td>
-              <td><%= link_to 'Remove From Cart', cart_item_path(cart_item),method: :delete, :class => "btn btn-info",
-              data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
+    <% @products.each do |product| %>
+      <tr> 
+        <td><%= product.name %></td>
+        <td><%= product.brand %></td>
+        <% @cart_items.each do |cart_item| %>
+          <% if product.id == cart_item.product_id && current_user.id == current_user.cart.user_id && current_user.cart.id == cart_item.cart_id %>
+            <td class="quantity-button"> 
+              <%= link_to '-', cart_items_decrease_quantity_cart_item_path(cart_item.product_id), method: :patch, class: "btn btn-info" %>
+              <%= cart_item.quantity %>
+              <%= link_to '+', cart_items_increase_quantity_cart_item_path(cart_item.product_id), method: :patch, class: "btn btn-info"%>
+            </td>
+            <td><%= cart_item.cgst %></td>
+            <td><%= cart_item.sgst %></td>
+            <td><%= cart_item.total_tax %></td>
+            <td><%= cart_item.price %></td>
+            <td><%= link_to 'Remove From Cart', cart_items_path(cart_item.id), method: :delete, class: "btn btn-info",
+            data: { confirm: 'Are you sure?' } %></td>
           <% end %>
-        </tr>
-      <%  end %>
-    <% end %>
+        <% end %>
+      </tr>
+    <%  end %>
   </table>
 </div>
+<% if @cart_items %>
+  <div class="order-button">
+    <%= link_to 'Place order', addresses_path(@cart_items), class: "btn btn-info" %>
+  </div>
+<% end %>
