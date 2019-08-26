@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_132129) do
+ActiveRecord::Schema.define(version: 2019_08_26_060009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_132129) do
   create_table "addresses", force: :cascade do |t|
     t.integer "building_no"
     t.string "area"
-    t.integer "city"
-    t.integer "state"
+    t.string "city"
+    t.string "state"
     t.integer "pincode"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_132129) do
     t.decimal "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_orders_on_address_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -117,4 +119,5 @@ ActiveRecord::Schema.define(version: 2019_08_22_132129) do
   add_foreign_key "addresses", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "addresses"
 end
