@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :require_login, only:[:index , :new, :edit]
+  before_action :require_login, only:[:index , :new, :edit, :create, :edit, :update,:destroy]
+  helper_method :redirect_to_products_path
 
   def index
-     @products = Product.all
+     @products = current_user.products
   end
 
   def new
@@ -11,11 +12,15 @@ class ProductsController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @product = Product.find_by(id: params[:id])
+  end
+
   def create
     @categories = Category.all
     @product = current_user.products.build(product_params)
       if @product.save
-        redirect_to  products_path
+        redirect_to_products_path
       else
         render 'products/new'
       end
@@ -28,9 +33,9 @@ class ProductsController < ApplicationController
 
   def update
     @categories = Category.all
-    @product =Product.find_by_id(params[:id]) 
+    @product = Product.find_by_id(params[:id]) 
     if @product.update(product_params)
-      redirect_to products_path
+      redirect_to_products_path
     else 
         render "products/edit"
     end
@@ -41,7 +46,7 @@ class ProductsController < ApplicationController
     @product.cart_items.destroy
     @product.destroy
  
-    redirect_to products_path
+    redirect_to_products_path
   end
 
   private
@@ -50,10 +55,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :brand, :price, :category_id, :image)
   end
 
-  def require_login
-    unless current_user  
-     flash[:danger] = "You must be logged in to access this section"
-     redirect_to sessions_new_path
-    end
+  def redirect_to_products_path
+    redirect_to products_path
   end
 end

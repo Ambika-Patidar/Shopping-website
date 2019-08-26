@@ -16,28 +16,41 @@
         </ul>
       </div>
     <% end %>
-    <p>
-      <%= f.label :product %><br>
-      <%= f.text_field :name %><br>
-    </p>
-    <p>
-      <%= f.label :brand %><br>
-      <%= f.text_field :brand %><br>
-    </p>
-    <p>
-      <%= f.label :price%><br>
-      <%= f.number_field :price %><br>
-    </p>
-    <p>
-      <%= f.label :category%><br>
-      <%= f.select :category_id, options_for_select(@categories.map { |c| [c.category_name, c.id] }), options = { include_blank: "Please select" } %><br>
-    </p>
-    <p>
-      <%= f.label :image %><br>
-      <%= f.file_field :image%><br>
-    </p>
-    <p>
-      <%= f.submit 'Submit'  %>
-    </p>
+    <div class="form-group row">
+      <%= f.label :name, "Product", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :brand, "Brand ", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :brand, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :price, "Price ", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.number_field :price, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :category, "Category ", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.select :category_id, options_for_select(@categories.map { |c| [c.category_name, c.id] }), options = { include_blank: "Please select" }, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :image, "Image ", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.file_field :image, class: "form-control" %>
+      </div>
+    </div>
+    <div class="submit-button">
+      <%= f.submit 'Submit', class: "btn btn-info" %>
+    </div>
+    <div class="cancel-button">
+      <%= link_to 'Cancel', products_path, class: "btn btn-info" %> 
+    </div>
   </div>
 <% end %>
