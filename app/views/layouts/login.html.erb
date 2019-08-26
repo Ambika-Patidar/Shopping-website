@@ -17,15 +17,15 @@
         </div>
         <ul class="nav pull-right">
           <div style="padding-right: 52px">
-            <li><%= link_to "Sign in", sessions_new_path, :class => "btn" %></li>
+            <li><%= link_to "Sign in", sessions_new_path, class: "btn" %></li>
           </div>
           <div style="padding-left: 50px;">
-            <li><%= link_to "Sign up", registrations_new_path, :class => "btn" %></li>
+            <li><%= link_to "Sign up", registrations_new_path, class: "btn" %></li>
           </div>  
         </ul>  
       </nav>
     </header>    
-    <%= render :partial =>'shared/flash_messages' %>   
+    <%= render partial: 'shared/flash_messages' %>   
     <%= yield %>                                               
   </body>   
 </html>  

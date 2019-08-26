@@ -12,19 +12,23 @@
         <div class="logo-image">
           <%= link_to image_tag('sc-logo.jpg'), dashboard_index_path %>
         </div>
-        <ul class="nav pull-right">
-          <li style="margin-right: 51px;"><%= link_to "Cart", cart_items_path,  :class => "btn btn-light" %></li>
-          <li><%= link_to "Log out", sessions_destroy_path, method: "delete",  :class => "btn btn-light" %></li>
-        </ul>
+        <% if current_user %>
+          <ul class="nav pull-right">
+            <li style="margin-right: 51px;"><%= link_to "Cart", cart_items_path, class: "btn btn-light" %></li>
+            <li><%= link_to "Log out", sessions_destroy_path, method: "delete", class: "btn btn-light" %></li>
+          </ul>
+        <% end %>
       </nav>
     </header>
   </head>
-
   <body>
-    <%= render :partial =>'shared/sidebar' %>
-    <%= render :partial =>'shared/flash_messages' %>
+    <% if current_user %>
+      <%= render partial: 'shared/sidebar' %>
+    <% end %>
+    <%= render partial: 'shared/flash_messages' %>
     <%= yield %>
   </body>
 </html>
+
 
 
