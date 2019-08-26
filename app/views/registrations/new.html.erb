@@ -13,29 +13,35 @@
         </ul>
       </div>
     <% end %>
-    <h2>
-    Sign Up
-    </h2>
-    <p>
-      <%= f.label :first_name, :required => true%><br>
-      <%= f.text_field :first_name %><br>
-    </p>
-    <p>
-      <%= f.label :last_name %><br>
-      <%= f.text_field :last_name %><br>
-    </p>
-    <p>
-      <%= f.label :email%><br>
-      <%= f.text_field :email %><br>
-    </p>
-    <p>
-      <%= f.label :password %><br>
-      <%= f.password_field :password %><br>
-    </p>
-    <p>
-      <%= f.submit 'Submit'  %>
-    </p>
-      Already new user? <%= link_to  'Sign in', sessions_new_path %> 
-     </div>
+    <h2>Sign Up</h2>
+    <div class="form-group row">
+      <%= f.label :first_name, "First Name ", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :first_name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :last_name, "Last Name ", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :last_name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :email, "Email", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :password, "Password ", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-6">
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+    </div>
+    <div class="submit-sign-button">
+      <p><%= f.submit 'Submit'  %></p>
+      <p>Already new user? <%= link_to  'Sign in', sessions_new_path %></p>
+    </div>
+  </div>
 <% end %>
   
