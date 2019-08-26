@@ -1,0 +1,27 @@
+<div class="address-list">  
+  <div class="address-button">
+    <%= link_to 'Add New Address', new_address_path, class: "btn btn-info" %>
+  </div> 
+  <table class="table table-striped" >
+    <thead class="thead-dark">
+      <tr> 
+        <th>Building No</th>
+        <th>Area/Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Pincode</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.building_no %></td>
+        <td><%= address.area %></td>
+        <td><%= address.city %></td>
+        <td><%= address.state %></td>
+        <td><%= address.pincode %></td>
+        <td><%= link_to 'Select', order_items_path(address), class: "btn btn-info" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
