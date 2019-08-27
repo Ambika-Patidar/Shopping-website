@@ -1,0 +1,12 @@
+<div class="order-invoice">
+  <div class="card-body" style="text-align: center; margin-left: -11rem;">
+    <% @order_items.each do |order_item| %>
+      <%= image_tag(order_item.product.image, class: "card-img-top") %>
+      <h5> <%= order_item.product.name %> </h5>
+      <p><%=order_item.product.brand %></p>
+      <p><%= order_item.price %></p>
+    <% end %>
+    <p>Total Item Purchased: <%= @order_items.count %> </p>
+    <p>Total Price: <%= @order_items.sum(:price) %> </p>
+  </div> 
+</div>

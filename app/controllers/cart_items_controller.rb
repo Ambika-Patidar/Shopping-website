@@ -47,7 +47,6 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_items = current_user.cart.cart_items
     @cart_item = @cart_items.find(params[:id])
-    byebug
     item = @cart_item.destroy
     if item
       total_price = @cart_items.sum(:price)

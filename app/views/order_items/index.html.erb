@@ -1,7 +1,4 @@
-<!-- <div style="margin-top: -828px; float: right; margin-right: 66px;">
-  <%= link_to #'Back', dashboard_index_path %>
-</div>
-<div class ="cart-products-list">
+<div class ="order-products-list">
   <table class="table table-striped" >
     <thead class="thead-dark">
       <tr> 
@@ -12,22 +9,20 @@
         <th>SGST</th>
         <th>Total Tax</th>
         <th>Total Price</th>
-        <th></th>
       </tr>
     </thead> 
-    <% current_user.cart.products.each #do |product| %>
-      <tr> 
-        <td><%=# product.name %></td>
-        <td><%= product.brand %></td>
-        <%# byebug %>
-        if
-            <td><%= cart_item.cgst %></td>
-            <td><%= cart_item.sgst %></td>
-            <td><%= cart_item.total_tax %></td>
-            <td><%= cart_item.price %></td>
-          <% #end %>
-        <% #end %>
-      </tr>
-    <% # end %>
+      <% @orders.each do |order| %>
+        <tr>
+          <% order.order_items.each do |order_item| %>
+            <td><%= order_item.product.name %></td>
+            <td><%= order_item.product.brand %></td>
+            <td><%= order_item.quantity %></td>
+            <td><%= order_item.cgst %></td>
+            <td><%= order_item.sgst %></td>
+            <td><%= order_item.total_tax %></td>
+            <td><%= order_item.price %></td>
+          </tr>
+          <% end %>
+        <% end %>
   </table>
-</div> -->
+</div>
