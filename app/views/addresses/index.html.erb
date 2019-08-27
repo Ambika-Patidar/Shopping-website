@@ -20,8 +20,15 @@
         <td><%= address.city %></td>
         <td><%= address.state %></td>
         <td><%= address.pincode %></td>
-        <td><%= link_to 'Select', order_items_path(address), class: "btn btn-info" %></td>
+        <td>
+          <%= link_to 'Select', order_items_order_display_order_item_path(id: address), class: "btn btn-info" %>
+          <%= link_to 'Delete', address_path(address), method: :delete, class: "btn btn-info" %>
+        </td>
       </tr>
     <% end %>
   </table>
 </div>
+<div class="cancel-address-button">
+  <%= link_to 'Cancel', cart_items_path, class: "btn btn-info" %> 
+</div>
+   
