@@ -98,21 +98,26 @@ img {
 
 .product-list {
   margin-left: 157px;
-  margin-top: -767px;
+  margin-top: -794px;
 }
 
 .new_product {
   margin-top: -735px;
 }
 
-.alert alert-notice {
+.alert-notice {
   color: orange;
 }
-
+.alert-info {
+  margin-left: 10px;
+  width: 958px;
+  position: absolute;
+  margin-top: -848px;
+}
 .new-product-button {
   float: right;
   margin-right: 46px;
-  margin-top: -821px;
+  margin-top: -839px;
 }
 
 .edit-product {
@@ -177,13 +182,13 @@ img {
   color: royalblue;
 }
 .address-list {
-  margin-right: 137px;
+  margin-right: -61px;
   margin-top: -849px;
 }
 .address-button {
   float: right;
   margin-top: 10px;
-  margin-right: -114px;
+  margin-right: 87px;
   margin-bottom: 10px;
 }
 .home-product {
@@ -201,4 +206,5 @@ img {
 }
 .table-striped td a{
   margin-right: 28px;
+
 }
