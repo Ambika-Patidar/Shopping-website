@@ -30,7 +30,7 @@
             <td><%= cart_item.sgst %></td>
             <td><%= cart_item.total_tax %></td>
             <td><%= cart_item.price %></td>
-            <td><%= link_to 'Remove From Cart', cart_items_path(cart_item.id), method: :delete, class: "btn btn-info",
+            <td><%= link_to 'Remove From Cart', cart_item_path(cart_item.id), method: :delete, class: "btn btn-info",
             data: { confirm: 'Are you sure?' } %></td>
           <% end %>
         <% end %>
@@ -38,8 +38,8 @@
     <%  end %>
   </table>
 </div>
-<% if @cart_items %>
+<% if @cart_items.present? %>
   <div class="order-button">
-    <%= link_to 'Place order', addresses_path(@cart_items), class: "btn btn-info" %>
+    <%= link_to 'Place order', addresses_path, class: "btn btn-info" %>
   </div>
 <% end %>

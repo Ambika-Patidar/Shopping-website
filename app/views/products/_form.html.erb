@@ -37,7 +37,7 @@
     <div class="form-group row">
       <%= f.label :category, "Category ", class: "col-sm-2 col-form-label" %>
       <div class="col-sm-8">
-        <%= f.select :category_id, options_for_select(@categories.map { |c| [c.category_name, c.id] }), options = { include_blank: "Please select" }, class: "form-control" %>
+        <%= f.select :category_id, options_for_select(product_category), options = { include_blank: "Please select" }, class: "form-control" %>
       </div>
     </div>
     <div class="form-group row">

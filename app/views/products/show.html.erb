@@ -1,14 +1,11 @@
 <div class="card-deck">
-  <div class="card" style=" height: 614px; padding: 9px;">
-    <div class="show-image", style="margin-left: 503px">
-      <%= image_tag(@product.image, class: "card-img-top") %>
+  <% unless current_user.present? %>
+    <div class="card" style=" height: 614px; height: 614px; margin-top: -105px; margin-left: -11px; margin-right: 0px;">
+      <%= render partial: "shared/show_product" %>
     </div>  
-    <div class="card-body" style="text-align: center; margin-left: -11rem;">
-      <h5> <%= @product.name %> </h5>
-      <p><%= @product.brand %></p>
-      <p><%= @product.price %></p>
-      <p><%= @product.category.category_name %> </p>
-      <p><%=link_to 'ADD TO CART',cart_items_path(id: @product.id), method: :post, class: "btn btn-info"%></p>
+  <% else %>
+    <div class="card" style="margin-left: 165px; margin-top: -848px; margin-right: -92px;">
+      <%= render partial: "shared/show_product" %>
     </div>
-  </div>  
+  <% end %>
 </div>
