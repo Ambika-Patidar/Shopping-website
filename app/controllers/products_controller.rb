@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   before_action :require_login, only:[:index , :new, :edit, :create, :edit, :update,:destroy]
-  helper_method :redirect_to_products_path
+  before_action :get_product, only:[:edit, :show, :update, :destroy]
+  helper_method :product_category
+  include ProductsHelper
 
   def index
      @products = current_user.products
@@ -13,13 +15,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
   end
 
   def create
     @categories = Category.all
     @product = current_user.products.build(product_params)
       if @product.save
+        flash[:info] = "Product Successfully Saved"
         redirect_to_products_path
       else
         render 'products/new'
@@ -28,13 +30,12 @@ class ProductsController < ApplicationController
 
   def edit
     @categories = Category.all
-    @product = Product.find_by_id(params[:id])
   end
 
   def update
-    @categories = Category.all
-    @product = Product.find_by_id(params[:id]) 
+    @categories = Category.all 
     if @product.update(product_params)
+      flash[:info] = "Product Successfully Updated"
       redirect_to_products_path
     else 
         render "products/edit"
@@ -42,11 +43,12 @@ class ProductsController < ApplicationController
   end  
 
   def destroy
-    @product = Product.find_by_id(params[:id])
     @product.cart_items.destroy
-    @product.destroy
- 
-    redirect_to_products_path
+    product_destroy = @product.destroy
+    if product_destroy
+      flash[:info] = "Product Successfully Deleted"
+      redirect_to_products_path
+    end
   end
 
   private
@@ -57,5 +59,9 @@ class ProductsController < ApplicationController
 
   def redirect_to_products_path
     redirect_to products_path
+  end
+
+  def get_product
+    @product = Product.find(params[:id])
   end
 end
