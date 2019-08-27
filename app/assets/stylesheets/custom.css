@@ -206,5 +206,16 @@ img {
 }
 .table-striped td a{
   margin-right: 28px;
-
+}
+.order-invoice {
+  margin-top: -800px;
+  margin-left: 141px;
+}
+.cancel-order-button {
+  margin-left: 880px;
+  margin-top: -37px;
+}
+.cancel-address-button {
+  margin-left: 820px;
+  margin-top: 30px;
 }

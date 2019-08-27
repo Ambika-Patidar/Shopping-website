@@ -4,15 +4,19 @@ Rails.application.routes.draw do
   resources :products
   resources :cart_items
   resources :addresses
-  resources :order_items
   get 'sessions/new'
   get 'registrations/new'
   get 'home/index'
   
-  resources :cart_items, :except => [:show] do 
+  resources :cart_items, except:[:show] do 
     member do 
       patch 'cart_items/decrease_quantity'
       patch 'cart_items/increase_quantity'
+    end
+  end
+  resources :order_items do 
+    member do 
+      get 'order_items/order_display'
     end
   end
   delete 'sessions/destroy' 
