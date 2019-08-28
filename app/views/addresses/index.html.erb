@@ -2,38 +2,44 @@
   <div class="address-button">
     <%= link_to 'Add New Address', new_address_path, class: "btn btn-info" %>
   </div> 
-  <table class="table table-striped" >
-    <thead class="thead-dark">
-      <tr> 
-        <th>Building No</th>
-        <th>Area/Street</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Pincode</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <% @addresses.each do |address| %>
-      <tr>
-        <td><%= address.building_no %></td>
-        <td><%= address.area %></td>
-        <td><%= address.city %></td>
-        <td><%= address.state %></td>
-        <td><%= address.pincode %></td>
-        <td>
-          <% if address.default == false %>
-            <%= link_to 'Make Default', addresses_default_address_address_path(id: address), method: :patch, class: "btn btn-info" %>
-          <% end %>
-            <%= link_to 'Delete', address_path(address), method: :delete, class: "btn btn-info" %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-<div class="cancel-address-button">
-  <%= link_to 'Cancel', cart_items_path, class: "btn btn-info" %> 
-</div>
-<div class="next-button">
-  <%= link_to 'Next', order_items_order_display_order_items_path, class: "btn btn-info" %> 
-</div>
+<% if @addresses %>
+    <table class="table table-striped" >
+      <thead class="thead-dark">
+        <tr> 
+          <th>Building No</th>
+          <th>Area/Street</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Pincode</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <% @addresses.each do |address| %>
+        <tr>
+          <td><%= address.building_no %></td>
+          <td><%= address.area %></td>
+          <td><%= address.city %></td>
+          <td><%= address.state %></td>
+          <td><%= address.pincode %></td>
+          <td>
+            <% if address.default == false %>
+              <%= link_to 'Make Default', addresses_set_address_address_path(id: address), method: :patch, class: "btn btn-info" %>
+            <% end %>
+              <%= link_to 'Delete', address_path(address), method: :delete, class: "btn btn-info" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="cancel-address-button">
+    <%= link_to 'Cancel', cart_items_path, class: "btn btn-info" %> 
+  </div>
+  <div class="next-button">
+    <%= link_to 'Next', order_items_order_display_order_items_path, class: "btn btn-info" %> 
+  </div>
+<% else %>
+  <% flash[:info] = "Dont Have Any Address Please Add Your Address" %>
+<% end %>
+
+
    

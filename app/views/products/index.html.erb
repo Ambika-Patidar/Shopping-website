@@ -1,32 +1,35 @@
 <div class="new-product-button">
   <p><%= link_to 'New', new_product_path, class:"btn btn-info" %></p>
 </div>
-<table class="table table-striped" >
-  <thead class="thead-dark">
+<% if @products.present? %>
+  <table class="table table-striped" >
     <div class="product-list">
-      <tr> 
-        <th>Product</th>
-        <th>Brand</th>
-        <th>Price</th>
-        <th>Category</th>
-        <th>Images</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.brand %></td>
-        <td><%= product.price %></td>
-        <td><%= product.category.category_name %></td>
-        <td><%= image_tag(product.image) if product.image.attachment %></td>
-        <td>
-          <%= link_to 'Edit',edit_product_path(product), class: "btn btn-info"  %>
-          <%= link_to 'Destroy',product_path(product),method: :delete, class: "btn btn-info" ,
-              data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </div>
+      <thead class="thead-dark">
+        <tr> 
+          <th>Product</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Images</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.brand %></td>
+          <td><%= product.price %></td>
+          <td><%= product.category.category_name %></td>
+          <td><%= image_tag(product.image) if product.image.attachment %></td>
+          <td>
+            <%= link_to 'Edit',edit_product_path(product), class: "btn btn-info"  %>
+            <%= link_to 'Destroy',product_path(product),method: :delete, class: "btn btn-info" ,
+                data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+      </div>
   </table>
-
+<% else %>
+  <% flash[:info] = "Dont Have Any Products" %>
+<% end %>

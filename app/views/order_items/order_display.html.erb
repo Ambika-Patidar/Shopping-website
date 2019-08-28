@@ -10,26 +10,24 @@
         <th>Quantity</th>
         <th>CGST</th>
         <th>SGST</th>
-        <th>Total Tax</th>
-        <th>Total Price</th>
+        <th>Product Price</th>
+       <!--  <th>Total Price</th> -->
       </tr>
     </thead> 
-    <% @products.each do |product| %>
-      <tr> 
-        <td><%= product.name %></td>
-        <td><%= product.brand %></td>
-        <% @cart_items.each do |cart_item| %>
-          <% if product.id == cart_item.product_id && current_user.id == current_user.cart.user_id && current_user.cart.id == cart_item.cart_id %>
-            <td><%= cart_item.quantity %></td>
-            <td><%= cart_item.cgst %></td>
-            <td><%= cart_item.sgst %></td>
-            <td><%= cart_item.total_tax %></td>
-            <td><%= cart_item.price %></td>
-          <% end %>
-        <% end %>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <% product = cart_item.product %> 
+          <td><%= product.name %></td>
+          <td><%= product.brand %></td>
+          <td><%= cart_item.quantity %></td>
+          <td><%= cart_item.cgst %></td>
+          <td><%= cart_item.sgst %></td>
+          <td><%= product.price %></td>
+<!--             <td><%= cart_item.price %></td> -->
       </tr>
-    <%  end %>
+    <% end %>
   </table>
+  <p style="margin-left: 748px;">Total Price: <%= @cart_items.sum(:price) %></p> 
 </div>
 <div class="order-button">
   <%= link_to 'Confirm your order', order_items_path(id: @address.id), method: :post, class: "btn btn-info" %>      

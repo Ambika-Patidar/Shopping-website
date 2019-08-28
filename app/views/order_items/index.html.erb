@@ -1,28 +1,33 @@
-<div class ="order-products-list">
-  <table class="table table-striped" >
-    <thead class="thead-dark">
-      <tr> 
-        <th>Product</th>
-        <th>Brand</th>
-        <th>Quantity</th>
-        <th>CGST</th>
-        <th>SGST</th>
-        <th>Total Tax</th>
-        <th>Total Price</th>
-      </tr>
-    </thead> 
-      <% @orders.each do |order| %>
-        <tr>
-          <% order.order_items.each do |order_item| %>
-            <td><%= order_item.product.name %></td>
-            <td><%= order_item.product.brand %></td>
-            <td><%= order_item.quantity %></td>
-            <td><%= order_item.cgst %></td>
-            <td><%= order_item.sgst %></td>
-            <td><%= order_item.total_tax %></td>
-            <td><%= order_item.price %></td>
-          </tr>
+<% if @orders.present? %>
+  <div class ="order-products-list">
+    <table class="table table-striped" >
+      <thead class="thead-dark">
+        <tr> 
+          <th>Product</th>
+          <th>Brand</th>
+          <th>Quantity</th>
+          <th>CGST</th>
+          <th>SGST</th>
+          <th>Product Price</th>
+          <th>Total Price</th>
+        </tr>
+      </thead> 
+        <% @orders.each do |order| %>
+          <tr>
+            <% order.order_items.each do |order_item| %>
+              <% product = order_item.product %>
+              <td><%= product.name %></td>
+              <td><%= product.brand %></td>
+              <td><%= order_item.quantity %></td>
+              <td><%= order_item.cgst %></td>
+              <td><%= order_item.sgst %></td>
+              <td><%= product.price %></td>
+              <td><%= order_item.price %></td>
+            </tr>
+            <% end %>
           <% end %>
-        <% end %>
-  </table>
-</div>
+    </table>
+  </div>
+<% else %>
+  <% flash[:info] = "Dont Have Any Orders" %>
+<% end %>
