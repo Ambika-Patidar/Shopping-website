@@ -1,14 +1,18 @@
+# frozen_string_literal: true
+
+# This Class Store particular user
 class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-   @current_user = User.find_by(id: session[:user_id])
+    @current_user = User.find_by(id: session[:user_id])
   end
 
   def require_login
-    unless current_user  
-     flash[:danger] = "You must be logged in to access this section"
-     redirect_to sessions_new_path
+    if current_user
+    else
+      flash[:danger] = 'You must be logged in to access this section'
+      redirect_to sessions_new_path
     end
   end
 end
