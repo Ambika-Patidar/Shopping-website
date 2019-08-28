@@ -21,8 +21,10 @@
         <td><%= address.state %></td>
         <td><%= address.pincode %></td>
         <td>
-          <%= link_to 'Select', order_items_order_display_order_item_path(id: address), class: "btn btn-info" %>
-          <%= link_to 'Delete', address_path(address), method: :delete, class: "btn btn-info" %>
+          <% if address.default == false %>
+            <%= link_to 'Make Default', addresses_default_address_address_path(id: address), method: :patch, class: "btn btn-info" %>
+          <% end %>
+            <%= link_to 'Delete', address_path(address), method: :delete, class: "btn btn-info" %>
         </td>
       </tr>
     <% end %>
@@ -30,5 +32,8 @@
 </div>
 <div class="cancel-address-button">
   <%= link_to 'Cancel', cart_items_path, class: "btn btn-info" %> 
+</div>
+<div class="next-button">
+  <%= link_to 'Next', order_items_order_display_order_items_path, class: "btn btn-info" %> 
 </div>
    

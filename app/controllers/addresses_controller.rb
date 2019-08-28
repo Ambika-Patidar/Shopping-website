@@ -1,12 +1,13 @@
 class AddressesController < ApplicationController
   before_action :require_login, only:[:index , :new, :create]
+  before_action :user_addresses, only:[:index, :destroy, :default_address]
+  before_action :get_address, only:[:destroy, :default_address]
 
   def new
     @address = Address.new
   end
 
   def index
-    @addresses = current_user.addresses
   end
 
   def create
@@ -20,12 +21,23 @@ class AddressesController < ApplicationController
   end
 
   def destroy
-    @addresses = current_user.addresses
-    address = @addresses.find_by(id: params[:id])
-    byebug
-    if address.destroy
+    if @address.destroy
       flash[:info] = "Successfully Address  Deleted "
       redirect_to addresses_path
+    end
+  end
+
+  def default_address
+    @addresses.each do |user_address|
+      if user_address.id == @address.id
+        user_address.default = true
+        user_address.save
+        flash[:info] = "Successfully Make Your Default Address"
+        redirect_to addresses_path
+      else
+        user_address.default = false
+        user_address.save
+      end
     end
   end
 
@@ -33,5 +45,13 @@ class AddressesController < ApplicationController
 
   def address_params
     params.require(:address).permit(:building_no, :area, :city, :state, :pincode)
+  end
+
+  def user_addresses
+    @addresses = current_user.addresses
+  end
+
+  def get_address
+    @address = @addresses.find_by(id: params[:id])
   end
 end

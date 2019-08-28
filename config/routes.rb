@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   resources :dashboard
   resources :products
   resources :cart_items
-  resources :addresses
   get 'sessions/new'
   get 'registrations/new'
+  get 'registrations/index'
   get 'home/index'
   
   resources :cart_items, except:[:show] do 
@@ -14,8 +14,13 @@ Rails.application.routes.draw do
       patch 'cart_items/increase_quantity'
     end
   end
-  resources :order_items do 
+  resources :addresses, except:[:update]  do 
     member do 
+      patch 'addresses/default_address'
+    end
+  end
+  resources :order_items do 
+    collection do 
       get 'order_items/order_display'
     end
   end

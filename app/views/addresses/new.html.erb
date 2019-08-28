@@ -45,10 +45,10 @@
           <%= f.text_field :pincode, class: "form-control" %>
         </div>
       </div>
-       <div class="submit-button" style="margin-left: 116px">
-        <%= f.submit 'Submit', class: "btn btn-info" %>
+       <div style="margin-left: 219px">
+        <%= link_to 'Submit', addresses_path, class: "btn btn-info" %>
       </div>
-      <div class="cancel-button" style="margin-left: 310px; margin-top: -38px;">
+      <div style="margin-left: 310px; margin-top: -38px;">
         <%= link_to 'Cancel', products_path, class: "btn btn-info" %> 
       </div>
     <% end %>

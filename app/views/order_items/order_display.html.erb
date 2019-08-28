@@ -32,7 +32,7 @@
   </table>
 </div>
 <div class="order-button">
-  <%= link_to 'Confirm your order', order_items_path(id: @address), method: :post, class: "btn btn-info" %>      
+  <%= link_to 'Confirm your order', order_items_path(id: @address.id), method: :post, class: "btn btn-info" %>      
 </div>
 <div class="cancel-order-button">
   <%= link_to 'Cancel', cart_items_path, class: "btn btn-info" %> 
