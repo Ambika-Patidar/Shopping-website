@@ -116,7 +116,8 @@ img {
 }
 .alert-secondary {
   position: absolute;
-  margin-top: -173px;
+  margin-top: -914px;
+  background-color: pink;
   width: 851px;
 }
 .alert-success {
@@ -163,7 +164,7 @@ img {
   margin-left: 10px;
 }
 .order-button {
-  margin-left: 700px;
+  margin-left: 763px;
   margin-top: 67px;
 }
 .address-form{
@@ -227,7 +228,7 @@ img {
   margin-left: 141px;
 }
 .cancel-order-button {
-  margin-left: 880px;
+  margin-left: 952px;
   margin-top: -37px;
 }
 .cancel-address-button {

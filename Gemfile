@@ -7,6 +7,8 @@ gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 4.3.1'
 # bootstrap javascript
 gem 'jquery-rails'
+# view  database table in table form in console 
+gem 'hirb'
 # mini-racer
 gem 'mini_racer', '~> 0.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
