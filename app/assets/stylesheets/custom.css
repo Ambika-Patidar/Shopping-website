@@ -114,6 +114,21 @@ img {
   position: absolute;
   margin-top: -848px;
 }
+.alert-secondary {
+  position: absolute;
+  margin-top: -173px;
+  width: 851px;
+}
+.alert-success {
+  position: absolute;
+  margin-top: -918px;
+  width: 851px;
+}
+.alert-danger {
+  position: absolute;
+  margin-top: -843px;
+  width: 881px;  
+}
 .new-product-button {
   float: right;
   margin-right: 46px;
@@ -220,5 +235,10 @@ img {
   margin-top: 30px;
 }
 .order-products-list{
-  margin-top: -849px;
+  margin-top: -798px;
 }
+.next-button {
+  margin-left: 929px;
+  margin-top: -39px;
+}
+
