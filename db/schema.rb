@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_141855) do
+ActiveRecord::Schema.define(version: 2019_08_28_125843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_141855) do
     t.integer "quantity", default: 1
     t.decimal "cgst"
     t.decimal "sgst"
-    t.decimal "total_tax"
     t.decimal "price"
     t.integer "product_id"
     t.integer "cart_id"
@@ -78,7 +77,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_141855) do
     t.integer "quantity"
     t.decimal "cgst"
     t.decimal "sgst"
-    t.decimal "total_tax"
     t.decimal "price"
     t.bigint "order_id"
     t.bigint "product_id"

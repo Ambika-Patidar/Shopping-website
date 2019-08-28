@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
   resources :addresses, except:[:update]  do 
     member do 
-      patch 'addresses/default_address'
+      patch 'addresses/set_address'
     end
   end
   resources :order_items do 
