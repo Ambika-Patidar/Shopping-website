@@ -7,6 +7,7 @@
       <p><%= order_item.price %></p>
     <% end %>
     <p>Total Item Purchased: <%= @order_items.count %> </p>
+    <p>Total Item Quantities: <%= @order_items.sum(:quantity) %> </p>
     <p>Total Price: <%= @order_items.sum(:price) %> </p>
   </div> 
 </div>

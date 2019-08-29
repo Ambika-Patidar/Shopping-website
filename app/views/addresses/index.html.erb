@@ -2,7 +2,7 @@
   <div class="address-button">
     <%= link_to 'Add New Address', new_address_path, class: "btn btn-info" %>
   </div> 
-<% if @addresses %>
+  <% if @addresses.present? %>
     <table class="table table-striped" >
       <thead class="thead-dark">
         <tr> 
