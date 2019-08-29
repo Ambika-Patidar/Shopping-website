@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   # Use ActiveModel has_secure_password
+  after_create :after_signup_create_cart
 
   has_secure_password
 
@@ -12,4 +13,8 @@ class User < ApplicationRecord
   validates :password ,length: { minimum: 6 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "only allows valid emails" }, uniqueness: true
   validates_format_of :first_name, :last_name, :with => /\A[a-zA-Z]+\z/
+
+  def after_signup_create_cart
+    self.create_cart(total_price: 0)
+  end
 end
