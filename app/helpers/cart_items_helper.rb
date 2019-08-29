@@ -31,26 +31,14 @@ module CartItemsHelper
     cart.update(total_price: total_price)
   end
 
-  def create_and_update_cart_item(cart_items, product, cart)
-    item = cart_items.find_by(product_id: @product.id)
-    # GST 2% on each product
-    quantity = item.new_record? ? 1 : item.quantity + 1
-
-    cgst, sgst, price = calculate_tax(product.price, quantity)
-    # Check product already present or not
-    unless item.new_record?
-      # update cart_items detailst
+  def create_item_in_cart_items(item, cgst, sgst , price)
+    if item.new_record?
+      # update cart_items details
       item.update(
         cgst: cgst,
         sgst: sgst,
         price: price
       )
-      update_total_price_and_cart(@cart_items, @cart)
-    else
-      cart.update(total_price: price)
-      product.cart_items.create(quantity: quantity, cgst: cgst, sgst: sgst, price: final_price, cart_id: current_user.cart.id)
-
-      flash[:info] = 'Successfully Added into Cart'
     end
   end
 end

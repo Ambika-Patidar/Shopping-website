@@ -35,7 +35,7 @@
           <% end %>
         </tr>
     </table>
-    <p style="margin-left: 748px;">Total Price: <%= @cart_items.sum(:price) %></p> 
+    <p style="margin-left: 748px;">Total Price: <%= @cart_items.sum(:price) %></p>
   </div>
   <% if @cart_items.present? %>
     <div class="order-button">

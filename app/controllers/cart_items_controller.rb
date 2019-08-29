@@ -17,8 +17,16 @@ class CartItemsController < ApplicationController
 
   def create
     @cart_items = @cart.cart_items
-    # find_or_initialze_by
-    create_and_update_cart_item(@cart_items, @products, @cart)
+    # find_or_initialize_by
+    item = @cart_items.find_or_initialize_by(product_id: @product.id)
+
+    quantity = item.new_record? ? 1 : item.quantity + 1
+    # GST 2% on each product
+    cgst, sgst, price = calculate_tax(@product.price, quantity)
+
+    create_item_in_cart_items(item, cgst, sgst, price)
+    update_total_price_and_cart(@cart_items, @cart)
+    flash[:info] = 'Successfully Added into Cart'
   end
 
   def destroy
