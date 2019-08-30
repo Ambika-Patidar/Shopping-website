@@ -1,20 +1,26 @@
-class User < ApplicationRecord
-  # Use ActiveModel has_secure_password
-  after_create :after_signup_create_cart
+# frozen_string_literal: true
 
+# This class Used for User Model
+class User < ApplicationRecord
+  after_create :initial_create_cart
+
+  # Use ActiveModel has_secure_password
   has_secure_password
 
   has_many :products
   has_one :cart
   has_many :orders
   has_many :addresses
-  
-  validates_presence_of :first_name, :last_name, :email
-  validates :password ,length: { minimum: 6 }
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "only allows valid emails" }, uniqueness: true
-  validates_format_of :first_name, :last_name, :with => /\A[a-zA-Z]+\z/
 
-  def after_signup_create_cart
-    self.create_cart(total_price: 0)
+  validates_presence_of :first_name, :last_name, :email
+  validates :password, length: { minimum: 6 }
+  validates :email, format: {
+    with: URI::MailTo::EMAIL_REGEXP, message: 'only allows valid emails'
+  },
+                    uniqueness: true
+  validates_format_of :first_name, :last_name, with: /\A[a-zA-Z]+\z/
+
+  def initial_create_cart
+    create_cart(total_price: 0)
   end
 end
