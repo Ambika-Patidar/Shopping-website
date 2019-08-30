@@ -7,16 +7,18 @@ class AddressesController < ApplicationController
   before_action :find_address, only: %i[destroy set_address]
 
   def new
-    @address = Address.new
+    @address = current_user.addresses.new
   end
 
-  def index; end
+  def index
+    flash[:info] = 'Choose Default Address For Deliver Your Order'
+  end
 
   def create
-    @address = current_user.addresses.build(address_params)
+    @address = current_user.addresses.new(address_params)
     if @address.save
       flash[:info] = 'Successfully Added delivery address'
-      redirect_to order_items_path
+      redirect_to addresses_path
     else
       render 'new'
     end
@@ -51,6 +53,6 @@ class AddressesController < ApplicationController
   end
 
   def find_address
-    @address = @addresses.find_by(id: params[:id])
+    @address = @addresses.find_by_id(params[:id])
   end
 end

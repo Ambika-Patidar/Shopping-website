@@ -9,10 +9,12 @@ class OrderItemsController < ApplicationController
   before_action :find_orders, except: %i[order_display]
   include OrderItemsHelper
 
-  def index; end
+  def index
+    flash[:info] = 'Your Previous Orders'
+  end
 
   def show
-    @order = @orders.find(params[:id])
+    @order = @orders.find_by_id(params[:id])
     @order_items = @order.order_items
   end
 
@@ -24,7 +26,7 @@ class OrderItemsController < ApplicationController
       flash[:info] = 'Thank You for Shopping'
       redirect_to order_item_path(id: @order)
     else
-      flash[:danger] = 'Cart is Empty'
+      flash[:notice] = 'Cart is Empty'
       redirect_to cart_items_path
     end
   end
@@ -43,7 +45,7 @@ class OrderItemsController < ApplicationController
   end
 
   def find_address
-    @address = current_user.addresses.find(params[:id]).id
+    @address = current_user.addresses.find_by_id(params[:address_id]).id
   end
 
   def find_user_address

@@ -4,19 +4,18 @@
 class CartItemsController < ApplicationController
   before_action :require_login
   before_action :find_product, except: %i[index destroy]
-  before_action :initialize_cart, only: %i[index create destroy]
+  before_action :find_cart_and_items, onlt: %i[index destroy create]
   include CartItemsHelper
 
   def index
-    @cart_items = @cart.cart_items
-    if @cart_items
-    else
-      flash[:info] = 'Dont Have Any Items in Cart'
-    end
+    flash[:info] = if @cart_items
+                     'Your Cart Items'
+                   else
+                     'Dont Have Any Items in Cart'
+                   end
   end
 
   def create
-    @cart_items = @cart.cart_items
     # find_or_initialize_by
     item = @cart_items.find_or_initialize_by(product_id: @product.id)
     quantity = item.new_record? ? 1 : item.quantity + 1
@@ -30,7 +29,6 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_items = @cart.cart_items
     @cart_item = @cart_items.find(params[:id])
     item = @cart_item.destroy
     if item
@@ -43,28 +41,31 @@ class CartItemsController < ApplicationController
   end
 
   def decrease_quantity
-    item, product_price = get_item_and_price
+    item, product_price = find_item_and_price
     if item.quantity > 1
       item.decrement(:quantity, 1)
       quantity_update(item, product_price)
+      flash[:info] = 'Your Item Quantity has update'
     else
       flash[:info] = 'Minimum Quantity is 1'
     end
   end
 
   def increase_quantity
-    item, product_price = get_item_and_price
+    item, product_price = find_item_and_price
     item.increment(:quantity, 1)
     quantity_update(item, product_price)
+    flash[:info] = ' Your Item Quantity has update'
   end
 
   private
 
   def find_product
-    @product = Product.find(params[:id])
+    @product = Product.find_by_id(params[:id])
   end
 
-  def initialize_cart
+  def find_cart_and_items
     @cart = current_user.cart
+    @cart_items = @cart.cart_items
   end
 end

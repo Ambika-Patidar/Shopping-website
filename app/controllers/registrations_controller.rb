@@ -2,7 +2,12 @@
 
 # This Class Used to Store Particular User Data.
 class RegistrationsController < ApplicationController
-  layout 'login'
+  layout 'login', except: %i[index]
+  layout 'application', only: %i[index]
+
+  def index
+    flash[:info] = 'Your Profile'
+  end
 
   def new
     @user = User.new
@@ -24,5 +29,4 @@ class RegistrationsController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
-
 end

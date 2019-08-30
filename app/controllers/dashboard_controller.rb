@@ -5,6 +5,6 @@ class DashboardController < ApplicationController
   before_action :require_login, only: [:index]
 
   def index
-    @products = Product.where.not(user_id: current_user.id)
+    @products = Product.of_other_user(current_user)
   end
 end

@@ -10,21 +10,22 @@ class ProductsController < ApplicationController
 
   def index
     @products = current_user.products
+    flash[:info] = 'Your Products'
   end
 
   def new
-    @product = Product.new
-    @user = User.new
+    @product = current_user.products.new
   end
 
   def show; end
 
   def create
-    @product = current_user.products.build(product_params)
+    @product = current_user.products.new(product_params)
     if @product.save
       flash[:info] = 'Product Successfully Saved'
       redirect_to_products_path
     else
+
       render 'products/new'
     end
   end
@@ -36,14 +37,14 @@ class ProductsController < ApplicationController
       flash[:info] = 'Product Successfully Updated'
       redirect_to_products_path
     else
+
       render 'products/edit'
     end
   end
 
   def destroy
     @product.cart_items.destroy
-    product_destroy = @product.destroy
-    if product_destroy
+    if @product.destroy
       flash[:info] = 'Product Successfully Deleted'
       redirect_to_products_path
     else
@@ -62,7 +63,7 @@ class ProductsController < ApplicationController
   end
 
   def find_product
-    @product = Product.find(params[:id])
+    @product = Product.find_by_id(params[:id])
   end
 
   def find_categories
