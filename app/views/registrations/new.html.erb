@@ -1,4 +1,5 @@
 <%= form_for @user, url: registrations_create_path(@user)  do |f| %>
+  <% byebug %>
   <div class="container text-center">
     <% if @user.errors.any? %>
       <div id ="error_explanation" class="error_messages">

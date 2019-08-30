@@ -4,7 +4,7 @@
   <div class="card-body" style="text-align: center; margin-left: -11rem;">
     <h5> <%= @product.name %> </h5>
     <p><%= @product.brand %></p>
-    <p><%= @product.price %></p>
+    <p><%= number_to_currency_br(@product.price) %></p>
     <p><%= @product.category.category_name %> </p>
     <p><%=link_to 'ADD TO CART',cart_items_path(id: @product.id), method: :post, class: "btn btn-info"%></p>
   </div>

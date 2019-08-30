@@ -15,14 +15,8 @@
         <div class="logo-image">
           <%= link_to image_tag('sc-logo.jpg'), home_index_path %>
         </div>
-        <ul class="nav pull-right">
-          <div style="padding-right: 52px">
-            <li><%= link_to "Sign in", sessions_new_path, class: "btn" %></li>
-          </div>
-          <div style="padding-left: 50px;">
-            <li><%= link_to "Sign up", registrations_new_path, class: "btn" %></li>
-          </div>  
-        </ul>  
+        <div style="margin-left: 73px;">
+        </div>
       </nav>
     </header>    
     <%= render partial: 'shared/flash_messages' %>   

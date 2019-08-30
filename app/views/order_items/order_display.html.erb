@@ -1,5 +1,5 @@
 <div style="margin-top: -828px; float: right; margin-right: 66px;">
-  <%= link_to 'Back', addresses_path %>
+  <%= link_to 'Back', cart_items_path %>
 </div>
 <div class ="cart-products-list">
   <table class="table table-striped" >
@@ -11,7 +11,6 @@
         <th>CGST</th>
         <th>SGST</th>
         <th>Product Price</th>
-       <!--  <th>Total Price</th> -->
       </tr>
     </thead> 
     <% @cart_items.each do |cart_item| %>
@@ -23,14 +22,13 @@
           <td><%= cart_item.cgst %></td>
           <td><%= cart_item.sgst %></td>
           <td><%= product.price %></td>
-<!--             <td><%= cart_item.price %></td> -->
       </tr>
     <% end %>
   </table>
   <p style="margin-left: 748px;">Total Price: <%= @cart_items.sum(:price) %></p> 
 </div>
 <div class="order-button">
-  <%= link_to 'Confirm your order', order_items_path(id: @address.id), method: :post, class: "btn btn-info" %>      
+  <%= link_to 'Confirm your order', order_items_path(address_id: @address.id), method: :post, class: "btn btn-info" %>      
 </div>
 <div class="cancel-order-button">
   <%= link_to 'Cancel', cart_items_path, class: "btn btn-info" %> 

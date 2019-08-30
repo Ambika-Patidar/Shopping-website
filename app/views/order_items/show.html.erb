@@ -4,10 +4,10 @@
       <%= image_tag(order_item.product.image, class: "card-img-top") %>
       <h5> <%= order_item.product.name %> </h5>
       <p><%=order_item.product.brand %></p>
-      <p><%= order_item.price %></p>
+      <p><%= number_to_currency_br(order_item.price) %></p>
     <% end %>
     <p>Total Item Purchased: <%= @order_items.count %> </p>
     <p>Total Item Quantities: <%= @order_items.sum(:quantity) %> </p>
-    <p>Total Price: <%= @order_items.sum(:price) %> </p>
+    <p>Total Price: <%= number_to_currency_br(@order_items.sum(:price)) %> </p>
   </div> 
 </div>

@@ -19,10 +19,10 @@
               <td><%= product.name %></td>
               <td><%= product.brand %></td>
               <td><%= order_item.quantity %></td>
-              <td><%= order_item.cgst %></td>
-              <td><%= order_item.sgst %></td>
-              <td><%= product.price %></td>
-              <td><%= order_item.price %></td>
+              <td><%= number_to_currency_br(order_item.cgst) %></td>
+              <td><%= number_to_currency_br(order_item.sgst) %></td>
+              <td><%= number_to_currency_br(product.price) %></td>
+              <td><%= number_to_currency_br(order_item.price) %></td>
             </tr>
             <% end %>
           <% end %>

@@ -1,5 +1,5 @@
 <div style="margin-top: -828px; float: right; margin-right: 66px;">
-  <%= link_to 'Back', dashboard_index_path %>
+  <%= link_to 'Back', dashboard_index_path, class: "btn btn-info" %>
 </div>
 <% if @cart_items.present? %>
   <div class ="cart-products-list">
@@ -25,9 +25,9 @@
                 <%= cart_item.quantity %>
                 <%= link_to '+', cart_items_increase_quantity_cart_item_path(cart_item.product_id), method: :patch, class: "btn btn-info"%>
               </td>
-              <td><%= cart_item.cgst %></td>
-              <td><%= cart_item.sgst %></td>
-              <td><%= product.price %></td>
+              <td><%= number_to_currency_br(cart_item.cgst) %></td>
+              <td><%= number_to_currency_br(cart_item.sgst) %></td>
+              <td><%= number_to_currency_br(product.price) %></td>
               <td>
                 <%= link_to 'Remove From Cart', cart_item_path(cart_item.id), method: :delete, class: "btn btn-info",
                   data: { confirm: 'Are you sure?' } %>
@@ -35,11 +35,11 @@
           <% end %>
         </tr>
     </table>
-    <p style="margin-left: 748px;">Total Price: <%= @cart_items.sum(:price) %></p>
+    <p style="margin-left: 748px;">Total Price: <%= number_to_currency_br(@cart_items.sum(:price)) %></p>
   </div>
   <% if @cart_items.present? %>
     <div class="order-button">
-      <%= link_to 'Place order', addresses_path, class: "btn btn-info" %>
+      <%= link_to 'Place order', order_items_order_display_order_items_path, class: "btn btn-info" %>
     </div>
   <% end %>
 <% else %>

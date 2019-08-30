@@ -34,9 +34,6 @@
   <div class="cancel-address-button">
     <%= link_to 'Cancel', cart_items_path, class: "btn btn-info" %> 
   </div>
-  <div class="next-button">
-    <%= link_to 'Next', order_items_order_display_order_items_path, class: "btn btn-info" %> 
-  </div>
 <% else %>
   <% flash[:info] = "Dont Have Any Address Please Add Your Address" %>
 <% end %>
