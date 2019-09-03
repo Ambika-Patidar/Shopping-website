@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before(:each) do
-    @user = User.create!(email: 'dfdd@yopmail.com', password: '123456')
+    @user = User.create!(first_name: 'aaaaa', last_name: 'aaaaa', email: 'dfdd@yopmail.com', password: '123456')
   end
 
   describe 'creation' do
@@ -16,6 +16,16 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     it 'should not let a user be created without an email address' do
       @user.email = nil
+      expect(@user).to_not be_valid
+    end
+
+    it 'should not let a user be created without an first name' do
+      @user.first_name = nil
+      expect(@user).to_not be_valid
+    end
+
+    it 'should not let a user be created without an last name' do
+      @user.last_name = nil
       expect(@user).to_not be_valid
     end
 
