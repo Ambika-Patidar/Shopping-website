@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :addresses
 
-  validates_presence_of :email
+  validates_presence_of :first_name, :last_name, :email
   validates :password, length: { minimum: 6 }
   validates :email, format: {
     with: URI::MailTo::EMAIL_REGEXP, message: 'only allows valid emails'
