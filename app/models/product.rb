@@ -2,6 +2,8 @@
 
 # This Class Used for Product Model
 class Product < ApplicationRecord
+  GST_PER = 0.02
+
   before_update :check_price, if: :price_changed?
 
   belongs_to :category
@@ -17,13 +19,15 @@ class Product < ApplicationRecord
 
   scope :of_other_user, ->(current_user) { where.not(user_id: current_user.id) }
 
+  private
+
   def check_price
     cart_items = CartItem.all
     price = self.price
     cart_items.each do |cart_item|
       quantity = cart_item.quantity
-      cgst = price * 0.02 * quantity
-      sgst = price * 0.02 * quantity
+      cgst = price * GST_PER * quantity
+      sgst = price * GST_PER * quantity
       price = price * quantity + cgst + sgst
       cart_item.update(cgst: cgst, sgst: sgst, price: price)
     end

@@ -2,17 +2,12 @@
 
 # This Class Store particular user
 class ApplicationController < ActionController::Base
-  helper_method :current_user
+  before_action :authenticate_user!
+  # before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def current_user
-    @current_user = User.find_by_id(session[:user_id])
-  end
+  protected
 
-  def require_login
-    if current_user
-    else
-      flash[:danger] = 'You must be logged in to access this section'
-      redirect_to sessions_new_path
-    end
+  def after_sign_up_path_for
+    redirect_to root_path
   end
 end

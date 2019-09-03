@@ -2,7 +2,7 @@
 
 # This Class used to perform Product operations.
 class ProductsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
   before_action :find_product, only: %i[edit show update destroy]
   helper_method :product_category
   before_action :find_categories, except: %i[destroy]
@@ -63,7 +63,7 @@ class ProductsController < ApplicationController
   end
 
   def find_product
-    @product = Product.find_by_id(params[:id])
+    @product = current_user.products.find_by_id(params[:id])
   end
 
   def find_categories

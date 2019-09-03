@@ -2,7 +2,6 @@
 
 # This Class Store and Delete and set default Address of particular User.
 class AddressesController < ApplicationController
-  before_action :require_login, only: %i[index new create]
   before_action :user_addresses, only: %i[index destroy set_address]
   before_action :find_address, only: %i[destroy set_address]
 

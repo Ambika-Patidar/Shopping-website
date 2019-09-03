@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users , controllers: { sessions: 'users/sessions' }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :dashboard
+  resources :dashboard, only: :index
   resources :products
   resources :cart_items
   get 'sessions/new'
   get 'registrations/new'
   get 'registrations/index'
-  get 'home/index'
+  get 'home/index' 
   
   resources :cart_items, except:[:show] do 
     member do 
@@ -28,6 +30,5 @@ Rails.application.routes.draw do
   
   post 'sessions/create'
   post 'registrations/create'
-
-  root 'home#index'
+  root 'dashboard#index'
 end

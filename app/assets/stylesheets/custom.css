@@ -33,7 +33,7 @@ body {
 .error_messages {
   color: red;
   font-size: small;
-  margin-top: 22px;
+  margin-top: -81px;
 }
 .alert {
   margin-top: 4px;
@@ -44,13 +44,13 @@ body {
 .bg-light {
   padding-left: 0px;
   background-color: #ffffff !important;
-  width: 100%;
   height: 82px;
   font-size: 28px;
   border-bottom: 1px solid #8c9cab;
   margin-top: -30px;
   margin-right: -19px; 
-
+  margin-left: -20px;
+  width: 95rem;
 }
 
 img {
@@ -64,18 +64,15 @@ img {
   margin-top: 267px;
   color: navy;
 }
-*, *::before, *::after {
-  margin-left: -5px;
-  margin-right: -20px;
-}
 .pull-right {
   margin-right: 65px;
 }
 .sidebar-nav {
   background-color: #2c2a2b;
   height: -webkit-fill-available;
-  margin-left: -25px;
-  margin-right: -5px;
+  margin-left: -45px;
+  margin-right: -37px;
+
 
 }
 .sidebar-nav a:hover {
@@ -112,7 +109,7 @@ img {
   margin-left: 10px;
   width: 958px;
   position: absolute;
-  margin-top: -906px;
+  margin-top: -849px;
 }
 .alert-secondary {
   position: absolute;
@@ -132,7 +129,7 @@ img {
 }
 .new-product-button {
   float: right;
-  margin-right: 46px;
+  margin-right: 55px;
   margin-top: -839px;
 }
 
@@ -168,6 +165,7 @@ img {
   margin-top: 67px;
 }
 .address-form{
+  position: fixed;
   margin-left: 530px;
   margin-top: -748px;
 }
@@ -179,7 +177,7 @@ img {
 }
 .submit-button {
   margin-top: 38px;
-  margin-left: -191px;
+  margin-left: -181px;
 }
 .submit-sign-button {
   margin-top: 38px;
@@ -199,12 +197,12 @@ img {
 }
 .address-list {
   margin-right: -61px;
-  margin-top: -849px;
+  margin-top: -776px;
 }
 .address-button {
   float: right;
-  margin-top: 10px;
-  margin-right: 87px;
+  margin-top: -52px;
+  margin-right: 52px;
   margin-bottom: 10px;
 }
 .home-product {
@@ -212,16 +210,18 @@ img {
   margin-left: -25px;
 }
 .table {
-  margin-left: 149px;
+  margin-left: 175px;
+  width: 81rem;
 }
 .cancel-button {
   margin-top: -44px;
-}
-.field_with_errors {
-  margin-left: 107px;
+  margin-left: 10px;;
 }
 .table-striped td a{
   margin-right: 28px;
+  margin-top: -11px;
+  margin-bottom: -11px;
+  height: 33px;
 }
 .order-invoice {
   margin-top: -800px;
@@ -235,11 +235,24 @@ img {
   margin-left: 820px;
   margin-top: 30px;
 }
-.order-products-list{
+.order-products-list {
   margin-top: -798px;
 }
 .next-button {
   margin-left: 929px;
   margin-top: -39px;
 }
-
+.user-info {
+  margin-left: 41rem;
+  margin-top: -43rem;
+}
+.user-info h5 {
+  color: brown;
+}
+.style-image {
+  width: 7rem;
+  height: 30px;
+}
+.form-control {
+  margin-left: 49px;
+}

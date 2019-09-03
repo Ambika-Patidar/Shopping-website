@@ -2,9 +2,10 @@
 
 # This module used for particular user Cart Item
 module CartItemsHelper
+  GST_PER = 0.02
   def calculate_tax(product_price, quantity)
-    cgst = product_price * 0.02 * quantity
-    sgst = product_price * 0.02 * quantity
+    cgst = product_price * GST_PER * quantity
+    sgst = product_price * GST_PER * quantity
     price = product_price * quantity + cgst + sgst
     [cgst, sgst, price]
   end
