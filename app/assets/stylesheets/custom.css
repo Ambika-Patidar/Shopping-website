@@ -104,6 +104,10 @@ img {
 
 .alert-notice {
   color: orange;
+  margin-top: -850px;
+  margin-left: 179px;
+  color: orange;
+  position: absolute;
 }
 .alert-info {
   margin-left: 10px;
