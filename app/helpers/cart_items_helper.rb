@@ -14,7 +14,6 @@ module CartItemsHelper
     total_price = @cart_items.sum(:price)
     current_user.cart.update(total_price: total_price)
     item.update(quantity: quantity, cgst: cgst, sgst: sgst, price: final_price)
-    redirect_to cart_items_path
   end
 
   def find_item_and_price
