@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users , controllers: { sessions: 'users/sessions' }
+  devise_for :users , controllers: { sessions: 'users/sessions',
+                                     registrations: 'users/registrations',
+                                     passwords: 'users/passwords'
+                                   }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :dashboard, only: :index
@@ -10,25 +13,26 @@ Rails.application.routes.draw do
   get 'registrations/index'
   get 'home/index' 
   
-  resources :cart_items, except:[:show] do 
+  resources :cart_items, except: :show do 
     member do 
-      patch 'cart_items/decrease_quantity'
-      patch 'cart_items/increase_quantity'
+      patch :decrease_quantity
+      patch :increase_quantity
     end
   end
-  resources :addresses, except:[:update]  do 
+  resources :addresses, except: :update do 
     member do 
-      patch 'addresses/set_address'
+      patch :set_address
     end
   end
   resources :order_items do 
     collection do 
-      get 'order_items/order_display'
+      get :order_display
     end
   end
   delete 'sessions/destroy' 
   
   post 'sessions/create'
   post 'registrations/create'
-  root 'dashboard#index'
+
+  root 'home#index'
 end

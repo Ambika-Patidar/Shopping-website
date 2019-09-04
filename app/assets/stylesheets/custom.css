@@ -1,7 +1,7 @@
-
 .container {
   margin-top: 105px;
-  margin-left: 314px;
+  margin-left: 197px;
+  text-align: center;
 
 }
 .navbar-nav mr-auto {
@@ -34,6 +34,7 @@ body {
   color: red;
   font-size: small;
   margin-top: -81px;
+  text-align: center;
 }
 .alert {
   margin-top: 4px;
@@ -169,15 +170,8 @@ img {
   margin-top: 67px;
 }
 .address-form{
-  position: fixed;
   margin-left: 530px;
   margin-top: -748px;
-}
-.address-form input{
-  margin-left: 95px;
-}
-.col-sm-10 {
-  margin-left: 20px;
 }
 .submit-button {
   margin-top: 38px;
@@ -259,4 +253,14 @@ img {
 }
 .form-control {
   margin-left: 49px;
+}
+.edit-user {
+  margin-top: -688px;
+  margin-left: 314px;
+}
+.edit-user h2{
+  margin-top: -88px;
+  position: absolute;
+  color: royalblue;
+  margin-left: 314px;
 }
