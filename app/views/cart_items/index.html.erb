@@ -1,4 +1,4 @@
-<div style="margin-top: -828px; float: right; margin-right: 66px;">
+<div style="position: absolute; margin-top: -582px; margin-left: 684px;">
   <%= link_to 'Back', dashboard_index_path, class: "btn btn-info" %>
 </div>
 <% if @cart_items.present? %>
@@ -14,35 +14,36 @@
           <th>Product Price</th>
           <th>Actions</th>
         </tr>
-      </thead> 
-          <% @cart_items.each do |cart_item| %>
-          <tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+          <tr class="cart_item">
             <% product = cart_item.product %> 
-              <td><%= product.name %></td>
-              <td><%= product.brand %></td>
-              <td class="quantity-button"> 
-                <%= link_to '-', cart_items_decrease_quantity_cart_item_path(cart_item.product_id), method: :patch, class: "btn btn-info" %>
-                <%= cart_item.quantity %>
-                <%= link_to '+', cart_items_increase_quantity_cart_item_path(cart_item.product_id), method: :patch, class: "btn btn-info"%>
-              </td>
-              <td><%= number_to_currency_br(cart_item.cgst) %></td>
-              <td><%= number_to_currency_br(cart_item.sgst) %></td>
-              <td><%= number_to_currency_br(product.price) %></td>
-              <td>
-                <%= link_to 'Remove From Cart', cart_item_path(cart_item.id), method: :delete, class: "btn btn-info",
-                  data: { confirm: 'Are you sure?' } %>
-              </td>
-          <% end %>
-        </tr>
+            <td><%= product.name %></td>
+            <td><%= product.brand %></td>
+            <td class="quantity-button"> 
+              <%= link_to '-', 'javascript:void(0)', url: decrease_quantity_cart_item_path(cart_item.product_id), class: "quantity", product_id: cart_item.product_id %>
+              <span class="cartItemQuantity"><%= cart_item.quantity %></span>
+              <%= link_to '+', 'javascript:void(0)', url: increase_quantity_cart_item_path(cart_item.product_id), class: "quantity", product_id: cart_item.product_id %>
+            </td>
+          <td><%= number_to_currency_br(cart_item.cgst) %></td>
+          <td><%= number_to_currency_br(cart_item.sgst) %></td>
+            <td><%= number_to_currency_br(product.price) %></td>
+            <td>
+              <%= link_to 'Remove From Cart', cart_item_path(cart_item.id), method: :delete, class: "btn btn-info",
+                data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
-    <p style="margin-left: 748px;">Total Price: <%= number_to_currency_br(@cart_items.sum(:price)) %></p>
+    <p class="cartItemprice" style="margin-left: 748px;">Total Price: <%= number_to_currency_br(@cart_items.sum(:price)) %></p>
   </div>
   <% if @cart_items.present? %>
     <div class="order-button">
-      <%= link_to 'Place order', order_items_order_display_order_items_path, class: "btn btn-info" %>
+      <%= link_to 'Place order', order_display_order_items_path, class: "btn btn-info" %>
     </div>
   <% end %>
 <% else %>
   <%= flash[:info] = 'Dont Have Any Items in Cart' %>
 <% end %>
-
