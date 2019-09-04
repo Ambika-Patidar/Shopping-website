@@ -23,7 +23,7 @@
           <td><%= address.pincode %></td>
           <td>
             <% if address.default == false %>
-              <%= link_to 'Make Default', addresses_set_address_address_path(id: address), method: :patch, class: "btn btn-info" %>
+              <%= link_to 'Make Default', set_address_address_path(id: address), method: :patch, class: "btn btn-info" %>
             <% end %>
               <%= link_to 'Delete', address_path(address), method: :delete, class: "btn btn-info" %>
           </td>

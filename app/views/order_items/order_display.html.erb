@@ -1,35 +1,43 @@
 <div style="margin-top: -828px; float: right; margin-right: 66px;">
   <%= link_to 'Back', cart_items_path %>
 </div>
-<div class ="cart-products-list">
-  <table class="table table-striped" >
-    <thead class="thead-dark">
-      <tr> 
-        <th>Product</th>
-        <th>Brand</th>
-        <th>Quantity</th>
-        <th>CGST</th>
-        <th>SGST</th>
-        <th>Product Price</th>
-      </tr>
-    </thead> 
-    <% @cart_items.each do |cart_item| %>
-      <tr>
-        <% product = cart_item.product %> 
-          <td><%= product.name %></td>
-          <td><%= product.brand %></td>
-          <td><%= cart_item.quantity %></td>
-          <td><%= cart_item.cgst %></td>
-          <td><%= cart_item.sgst %></td>
-          <td><%= product.price %></td>
-      </tr>
-    <% end %>
-  </table>
-  <p style="margin-left: 748px;">Total Price: <%= @cart_items.sum(:price) %></p> 
-</div>
-<div class="order-button">
-  <%= link_to 'Confirm your order', order_items_path(address_id: @address.id), method: :post, class: "btn btn-info" %>      
-</div>
-<div class="cancel-order-button">
-  <%= link_to 'Cancel', cart_items_path, class: "btn btn-info" %> 
-</div>
+<% if @addresses.present? %>
+  <div class ="cart-products-list">
+    <table class="table table-striped" >
+      <thead class="thead-dark">
+        <tr> 
+          <th>Product</th>
+          <th>Brand</th>
+          <th>Quantity</th>
+          <th>CGST</th>
+          <th>SGST</th>
+          <th>Product Price</th>
+        </tr>
+      </thead> 
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <% product = cart_item.product %> 
+            <td><%= product.name %></td>
+            <td><%= product.brand %></td>
+            <td><%= cart_item.quantity %></td>
+            <td><%= cart_item.cgst %></td>
+            <td><%= cart_item.sgst %></td>
+            <td><%= product.price %></td>
+        </tr>
+      <% end %>
+    </table>
+    <p style="margin-left: 748px;">Total Price: <%= @cart_items.sum(:price) %></p> 
+  </div>
+  <div class="order-button">
+    <%= link_to 'Confirm your order', order_items_path(address_id: @address.id), method: :post, class: "btn btn-info" %>      
+  </div>
+  <div class="cancel-order-button">
+    <%= link_to 'Cancel', cart_items_path, class: "btn btn-info" %> 
+  </div>
+<% else %>
+  <% flash[:info] = "Please Add Your Delivery Address" %>
+  <div style="margin-top: -700px; text-align: center; ">
+    <%= link_to 'Add New Address', new_address_path, class: "btn btn-info" %>
+  </div> 
+<% end %>
+  

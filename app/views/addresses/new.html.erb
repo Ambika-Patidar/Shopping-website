@@ -11,8 +11,8 @@
             <li><%= msg %> </li>
           <% end %>
         </ul>
-      </div>
-    <% end %>
+       </div>
+     <% end %>
     <h5 class="address-header">Delivery Address</h5>
     <%= form_for @address, url: addresses_path(@address) do |f| %>
       <div class="form-group row">
@@ -45,11 +45,11 @@
           <%= f.text_field :pincode, class: "form-control" %>
         </div>
       </div>
-       <div style="margin-left: 113px">
+       <div style="margin-left: 190px">
         <%= f.submit 'Submit', class: "btn btn-info"%>
       </div>
-      <div style="margin-left: 310px; margin-top: -38px;">
-        <%= link_to 'Cancel', products_path, class: "btn btn-info" %> 
+      <div style="margin-left: 285px; margin-top: -38px;">
+        <%= link_to 'Cancel', addresses_path, class: "btn btn-info" %> 
       </div>
     <% end %>
   </div>
