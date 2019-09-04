@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'creation' do
-    it 'should have one user created after being created' do
+    it 'should create one user' do
       expect(User.all.count).to eql(1)
     end
   end
