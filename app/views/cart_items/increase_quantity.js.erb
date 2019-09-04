@@ -1,0 +1,2 @@
+$(".cart_item").html("<%= j (render(:partial => 'cart_items/cart_products')) %>");
+$('.cartItemprice').html('Total Price: <%= number_to_currency_br(@cart_items.sum(:price))%>');
