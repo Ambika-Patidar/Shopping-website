@@ -2,6 +2,7 @@
 
 # This class uses to store products in particular user cart
 class CartItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_product, except: %i[index destroy]
   before_action :find_cart_and_items, onlt: %i[index destroy create]
   include CartItemsHelper
@@ -40,6 +41,7 @@ class CartItemsController < ApplicationController
 
   def decrease_quantity
     item, product_price = find_item_and_price
+    @cart_item = item
     if item.quantity > 1
       item.decrement(:quantity, 1)
       quantity_update(item, product_price)
@@ -52,6 +54,7 @@ class CartItemsController < ApplicationController
   def increase_quantity
     item, product_price = find_item_and_price
     item.increment(:quantity, 1)
+    @cart_item = item
     quantity_update(item, product_price)
     flash[:info] = ' Your Item Quantity has update'
   end

@@ -2,7 +2,7 @@
 
 # This class used to store Order Items of Paticular user.
 class OrderItemsController < ApplicationController
-  # before_action :require_login, only: %i[index show order_display create]
+  before_action :authenticate_user!
   before_action :find_address, only: %i[create]
   before_action :find_user_address, only: %i[create order_display]
   before_action :user_cart_and_cartitems, only: %i[create order_display]
