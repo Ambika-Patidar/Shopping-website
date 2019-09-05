@@ -7,3 +7,12 @@ $(document).on('click', '.quantity', function() {
     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
   })
 })
+
+$(document).on('change','.category_products',function() {
+  var category_id = $('select.category_products :selected').val()
+  $.ajax({
+    url: '/dashboard',
+    type: 'get',
+    data: { "category_id": category_id }
+  })
+})
