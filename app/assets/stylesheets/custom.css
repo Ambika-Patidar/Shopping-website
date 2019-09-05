@@ -70,11 +70,9 @@ img {
 }
 .sidebar-nav {
   background-color: #2c2a2b;
-  height: -webkit-fill-available;
   margin-left: -45px;
   margin-right: -37px;
-
-
+  height: 747px;
 }
 .sidebar-nav a:hover {
   color: #ffffff!important;

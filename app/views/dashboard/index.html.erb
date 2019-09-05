@@ -1,7 +1,6 @@
 <div class="dashboard_sidebar">
   <div class="user-dashboard">
-    <div class="card-deck" style="position: absolute; width: 100%; margin-top: 2px;">
-      <%= render partial: "shared/all_products" %>
-    </div>
+    <%= select_tag 'category_id', options_for_select(product_category), include_blank: "Please select", class: "category_products" %>
+    <%= render partial: "shared/all_products" %>
   </div>
 </div>

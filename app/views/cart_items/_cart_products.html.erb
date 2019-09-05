@@ -1,15 +1,15 @@
-<% product = @cart_item.product %> 
+<% product = cart_item.product %> 
 <td><%= product.name %></td>
 <td><%= product.brand %></td>
 <td class="quantity-button"> 
-  <%= link_to '-', 'javascript:void(0)', url: decrease_quantity_cart_item_path(@cart_item.product_id), class: "quantity", product_id: @cart_item.product_id %>
-  <span class="cartItemQuantity"><%= @cart_item.quantity %></span>
-  <%= link_to '+', 'javascript:void(0)', url: increase_quantity_cart_item_path(@cart_item.product_id), class: "quantity", product_id: @cart_item.product_id %>
+  <%= link_to '-', 'javascript:void(0)', url: decrease_quantity_cart_item_path(cart_item.product_id), class: "quantity", product_id: cart_item.product_id %>
+  <%= cart_item.quantity %>
+  <%= link_to '+', 'javascript:void(0)', url: increase_quantity_cart_item_path(cart_item.product_id), class: "quantity", product_id: cart_item.product_id %>
 </td>
-<td><%= number_to_currency_br(@cart_item.cgst) %></td>
-<td><%= number_to_currency_br(@cart_item.sgst) %></td>
+<td><%= number_to_currency_br(cart_item.cgst) %></td>
+<td><%= number_to_currency_br(cart_item.sgst) %></td>
 <td><%= number_to_currency_br(product.price) %></td>
 <td>
-  <%= link_to 'Remove From Cart', cart_item_path(@cart_item.id), method: :delete, class: "btn btn-info",
+  <%= link_to 'Remove From Cart', cart_item_path(cart_item.id), method: :delete, class: "btn btn-info",
     data: { confirm: 'Are you sure?' } %>
 </td>
