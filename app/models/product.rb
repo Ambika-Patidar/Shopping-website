@@ -18,6 +18,7 @@ class Product < ApplicationRecord
   has_one_attached :image
 
   scope :of_other_user, ->(current_user) { where.not(user_id: current_user.id) }
+  scope :of_category, ->(category_id) { where(category_id: category_id) }
 
   private
 
