@@ -5,7 +5,7 @@ class CartItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_product, except: %i[index destroy]
   before_action :find_cart_and_items, onlt: %i[index destroy create]
-  include CartItemsHelper
+  include CartItems
 
   def index
     flash[:info] = if @cart_items

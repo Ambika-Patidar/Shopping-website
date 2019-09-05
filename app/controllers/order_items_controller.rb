@@ -7,7 +7,7 @@ class OrderItemsController < ApplicationController
   before_action :find_user_address, only: %i[create order_display]
   before_action :user_cart_and_cartitems, only: %i[create order_display]
   before_action :find_orders, except: %i[order_display]
-  include OrderItemsHelper
+  include OrderItems
 
   def index
     flash[:info] = 'Your Previous Orders'
