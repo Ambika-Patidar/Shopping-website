@@ -8,11 +8,7 @@ class CartItemsController < ApplicationController
   include CartItems
 
   def index
-    flash[:info] = if @cart_items
-                     'Your Cart Items'
-                   else
-                     'Dont Have Any Items in Cart'
-                   end
+    flash[:info] =  @cart_items ? 'Your Cart Items' : 'Dont Have Any Items in Cart'
   end
 
   def create
