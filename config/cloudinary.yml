@@ -1,0 +1,19 @@
+
+development:
+  cloud_name: gammastack
+  api_key: '861792521644996'
+  api_secret: 9hv1VoyKak51_C0HMbFQrUgXJ2s
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: gammastack
+  api_key: '861792521644996'
+  api_secret: 9hv1VoyKak51_C0HMbFQrUgXJ2s
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: gammastack
+  api_key: '861792521644996'
+  api_secret: 9hv1VoyKak51_C0HMbFQrUgXJ2s
+  enhance_image_tag: true
+  static_file_support: false
